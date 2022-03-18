@@ -29,10 +29,10 @@ function service(data) {
       const query = {};
 
       if(title) {
-        query.title = /`${title}`/i;
+        query.title = new RegExp(title, "gi");
       }
       if (category) {
-        query.category = /`${category}`/i;
+        query.category = new RegExp(category, "gi");;
       }
 
       locals.events = await EventModel.find(query).sort({ createdAt: 'desc' });
